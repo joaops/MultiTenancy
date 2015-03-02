@@ -1,20 +1,24 @@
 package panda.config;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-
-import java.util.Arrays;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * Created by Feng on 01-Mar-15.
  */
-@SpringBootApplication
-public class Application {
 
-    public static void main(String[] args) throws Throwable {
-        ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
-        Arrays.stream(ctx.getBeanDefinitionNames()).forEach(System.out::println);
+public class Application extends AbstractAnnotationConfigDispatcherServletInitializer {
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[]{WebSecurityConfig.class, PersistConfig.class};
     }
 
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[]{MvcConfig.class};
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
 }
