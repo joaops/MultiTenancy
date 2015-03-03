@@ -1,11 +1,15 @@
 package panda.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import panda.repo.IUserDao;
+import panda.repo.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by Feng on 01-Mar-15.
@@ -13,9 +17,12 @@ import java.sql.SQLException;
 @Controller
 public class UserCtrl {
 
+    @Autowired
+    IUserDao userDao;
+
     @ResponseBody
     @RequestMapping(value = "/**")
-    public String showUser(HttpServletRequest request) throws SQLException {
-        return request.getRemoteUser();
+    public List<User> showUser(HttpServletRequest request) throws SQLException {
+        return userDao.findAll();
     }
 }
