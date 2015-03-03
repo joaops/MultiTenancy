@@ -14,7 +14,7 @@ public class MyTenantIdentifierResolver implements CurrentTenantIdentifierResolv
     public String resolveCurrentTenantIdentifier() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication == null && authentication instanceof AnonymousAuthenticationToken) {
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             System.out.println("Fall to default identifer: master");
             return "master";
         } else {

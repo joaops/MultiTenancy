@@ -35,19 +35,19 @@ public class PersistConfig {
 //        Arrays.stream(ctx.getBeanDefinitionNames()).sorted().forEach(System.out::println);
 //    }
 
-    @Bean()
-    public BasicDataSource dataSource() {
-        BasicDataSource driverManagerDataSource = new BasicDataSource();
-        driverManagerDataSource.setDriverClassName("org.h2.Driver");
-        driverManagerDataSource.setUrl("jdbc:h2:~/h2db/master;AUTO_SERVER=true;DB_CLOSE_DELAY=-1");
-        return driverManagerDataSource;
-    }
+//    @Bean()
+//    public BasicDataSource dataSource() {
+//        BasicDataSource driverManagerDataSource = new BasicDataSource();
+//        driverManagerDataSource.setDriverClassName("org.h2.Driver");
+//        driverManagerDataSource.setUrl("jdbc:h2:~/h2db/master;AUTO_SERVER=true;DB_CLOSE_DELAY=-1");
+//        return driverManagerDataSource;
+//    }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setPackagesToScan("panda.repo");
-        em.setDataSource(dataSource());
+//        em.setDataSource(dataSource());
 
         final HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(jpaVendorAdapter);
@@ -62,9 +62,9 @@ public class PersistConfig {
         props.put("hibernate.show_sql", "true");
         props.put("hibernate.format_sql", "true");
 
-//        props.put("hibernate.tenant_identifier_resolver", MyTenantIdentifierResolver.class.getName());
-//        props.put("hibernate.multi_tenant_connection_provider", MyMultiTenantConnectionProvider.class.getName());
-//        props.put("hibernate.multiTenancy", "DATABASE");
+        props.put("hibernate.tenant_identifier_resolver", MyTenantIdentifierResolver.class.getName());
+        props.put("hibernate.multi_tenant_connection_provider", MyMultiTenantConnectionProvider.class.getName());
+        props.put("hibernate.multiTenancy", "DATABASE");
         return props;
     }
 

@@ -24,11 +24,6 @@ public class MyMultiTenantConnectionProvider extends AbstractMultiTenantConnecti
     @Override
     protected ConnectionProvider getAnyConnectionProvider() {
         System.out.println("Getting any connection");
-        try {
-            System.out.println(connProviderMap.get("master").getConnection().getMetaData());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         return connProviderMap.get("master");
     }
 

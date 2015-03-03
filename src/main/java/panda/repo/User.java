@@ -18,8 +18,6 @@ public class User implements UserDetails {
     private String username;
 
     private String password;
-    private boolean enabled;
-    private String role;
     private String db;
 
     public String getDb() {
@@ -30,21 +28,9 @@ public class User implements UserDetails {
         this.db = db;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     @Override
     public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+        return true;
     }
 
     @Override

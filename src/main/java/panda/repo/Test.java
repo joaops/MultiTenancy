@@ -8,6 +8,14 @@ import javax.persistence.Id;
  */
 @Entity
 public class Test {
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+
     @Id
     private String test;
 }
