@@ -11,6 +11,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import panda.config.multitenant.MyMultiTenantConnectionProvider;
+import panda.config.multitenant.MyTenantIdentifierResolver;
 
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
@@ -28,12 +30,12 @@ public class PersistConfig {
     @Autowired
     private ApplicationContext ctx;
 
-    @PostConstruct
-    public void examine() throws SQLException {
-        Arrays.stream(ctx.getBeanDefinitionNames()).sorted().forEach(System.out::println);
-    }
+//    @PostConstruct
+//    public void examine() throws SQLException {
+//        Arrays.stream(ctx.getBeanDefinitionNames()).sorted().forEach(System.out::println);
+//    }
 
-    @Bean(name = "masterDataSource")
+    @Bean()
     public BasicDataSource dataSource() {
         BasicDataSource driverManagerDataSource = new BasicDataSource();
         driverManagerDataSource.setDriverClassName("org.h2.Driver");
@@ -55,13 +57,13 @@ public class PersistConfig {
 
     @Bean
     public Map<String, Object> jpaProperties() {
-        Map<String, Object> props = new HashMap<String, Object>();
-        props.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
+        Map<String, Object> props = new HashMap<>();
+        props.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         props.put("hibernate.show_sql", "true");
         props.put("hibernate.format_sql", "true");
 
-//        props.put("hibernate.tenant_identifier_resolver", TenantIdentifierResolver.class.getName());
-//        props.put("hibernate.multi_tenant_connection_provider", SimpleMultiTenantConnectionProvider.class.getName());
+//        props.put("hibernate.tenant_identifier_resolver", MyTenantIdentifierResolver.class.getName());
+//        props.put("hibernate.multi_tenant_connection_provider", MyMultiTenantConnectionProvider.class.getName());
 //        props.put("hibernate.multiTenancy", "DATABASE");
         return props;
     }
