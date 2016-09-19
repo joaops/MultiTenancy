@@ -1,4 +1,4 @@
-package panda.config.multitenant;
+package br.com.joaops.smt.configuration;
 
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import java.sql.Connection;

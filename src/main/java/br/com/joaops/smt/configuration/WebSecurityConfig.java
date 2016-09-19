@@ -1,4 +1,4 @@
-package panda.config;
+package br.com.joaops.smt.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;

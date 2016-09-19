@@ -1,4 +1,4 @@
-package panda.config;
+package br.com.joaops.smt.configuration;
 
 /**
  * Created by Feng on 01-Mar-15.

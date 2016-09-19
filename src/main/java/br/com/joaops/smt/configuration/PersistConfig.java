@@ -1,6 +1,5 @@
-package panda.config;
+package br.com.joaops.smt.configuration;
 
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -11,12 +10,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import panda.config.multitenant.MyMultiTenantConnectionProvider;
-import panda.config.multitenant.MyTenantIdentifierResolver;
-
-import javax.annotation.PostConstruct;
-import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,27 +21,10 @@ import java.util.Map;
 @EnableJpaRepositories(basePackages = {"panda.repo"})
 public class PersistConfig {
     
-    @Autowired
-    private ApplicationContext ctx;
-    
-    //@PostConstruct
-    //public void examine() throws SQLException {
-    //Arrays.stream(ctx.getBeanDefinitionNames()).sorted().forEach(System.out::println);
-    //}
-    
-    //@Bean()
-    //public BasicDataSource dataSource() {
-    //  BasicDataSource driverManagerDataSource = new BasicDataSource();
-    //  driverManagerDataSource.setDriverClassName("org.h2.Driver");
-    //  driverManagerDataSource.setUrl("jdbc:h2:~/h2db/master;AUTO_SERVER=true;DB_CLOSE_DELAY=-1");
-    //  return driverManagerDataSource;
-    //}
-    
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setPackagesToScan("panda.repo");
-        //em.setDataSource(dataSource());
         final HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(jpaVendorAdapter);
         em.setJpaPropertyMap(this.jpaProperties());

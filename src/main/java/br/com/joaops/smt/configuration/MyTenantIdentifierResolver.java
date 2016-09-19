@@ -1,4 +1,4 @@
-package panda.config.multitenant;
+package br.com.joaops.smt.configuration;
 
 import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
