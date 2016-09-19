@@ -1,0 +1,7 @@
+Instruções:
+
+Crie Três Banco de Dados, com os nomes: master, tenant1 e tenant2;
+Para cada banco, cria as tabelas: users, test;
+No BD master, deve ser cadastrado todos os usuários na tabela users, mas nos BD tenant1 e tenant2, deve ser cadastrado apenas o usuário correspondente ao banco;
+
+Os SQL estão no diretório: multitenant\src\main\resources
