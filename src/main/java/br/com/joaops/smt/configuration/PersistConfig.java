@@ -1,7 +1,5 @@
 package br.com.joaops.smt.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -18,13 +16,13 @@ import java.util.Map;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"panda.repo"})
+@EnableJpaRepositories(basePackages = {"br.com.joaops.smt.repository"})
 public class PersistConfig {
     
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setPackagesToScan("panda.repo");
+        em.setPackagesToScan("br.com.joaops.smt.model");
         final HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(jpaVendorAdapter);
         em.setJpaPropertyMap(this.jpaProperties());

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"panda.controller"})
+@ComponentScan(basePackages = {"br.com.joaops.smt.controller"})
 public class MvcConfig {
-
+    
 }

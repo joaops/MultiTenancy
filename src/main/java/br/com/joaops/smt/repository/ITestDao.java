@@ -1,9 +1,8 @@
-package panda.repo;
+package br.com.joaops.smt.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import br.com.joaops.smt.model.Test;
 
-/**
- * Created by Feng on 02-Mar-15.
- */
 public interface ITestDao extends JpaRepository<Test, String> {
+    
 }

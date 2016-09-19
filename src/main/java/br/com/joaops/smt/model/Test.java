@@ -1,16 +1,14 @@
-package panda.repo;
+package br.com.joaops.smt.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Created by Feng on 02-Mar-15.
- */
 @Entity
 @Table(name = "test")
-public class Test {
+public class Test implements Serializable {
     
     @Id
     @Column(name = "test")

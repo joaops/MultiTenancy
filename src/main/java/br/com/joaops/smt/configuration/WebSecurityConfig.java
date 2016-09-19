@@ -1,6 +1,7 @@
 package br.com.joaops.smt.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service;
 @Configuration
 @EnableWebMvcSecurity
 @ComponentScan(
-        basePackages = "panda.repo",
+        basePackages = {"br.com.joaops.smt.repository", "br.com.joaops.smt.service"},
         includeFilters = @ComponentScan.Filter(Service.class)
 )
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -37,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     
     @Autowired
+    //@Qualifier
     UserDetailsService userDetailsService;
     
     @Override

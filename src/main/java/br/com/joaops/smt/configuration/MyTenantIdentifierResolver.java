@@ -4,7 +4,7 @@ import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import panda.repo.User;
+import br.com.joaops.smt.model.User;
 
 /**
  * Created by Feng on 02-Mar-15.

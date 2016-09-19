@@ -1,9 +1,8 @@
-package panda.repo;
+package br.com.joaops.smt.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import br.com.joaops.smt.model.User;
 
-/**
- * Created by Feng on 02-Mar-15.
- */
 public interface IUserDao extends JpaRepository<User, String> {
+    
 }
