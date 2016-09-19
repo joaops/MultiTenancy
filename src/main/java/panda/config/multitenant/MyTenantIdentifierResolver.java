@@ -10,10 +10,10 @@ import panda.repo.User;
  * Created by Feng on 02-Mar-15.
  */
 public class MyTenantIdentifierResolver implements CurrentTenantIdentifierResolver {
+    
     @Override
     public String resolveCurrentTenantIdentifier() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             System.out.println("Fall to default identifer: master");
             return "master";
@@ -22,9 +22,10 @@ public class MyTenantIdentifierResolver implements CurrentTenantIdentifierResolv
             return ((User) authentication.getPrincipal()).getDb();
         }
     }
-
+    
     @Override
     public boolean validateExistingCurrentSessions() {
         return false;
     }
+    
 }

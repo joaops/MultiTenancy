@@ -6,18 +6,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Collection;
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 /**
  * Created by Feng on 01-Mar-15.
  */
 
 @Entity
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
     private String password;
+    
+    @Column(name = "db")
     private String db;
 
     public String getDb() {

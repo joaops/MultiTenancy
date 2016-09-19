@@ -23,8 +23,7 @@ import org.springframework.stereotype.Service;
         includeFilters = @ComponentScan.Filter(Service.class)
 )
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -36,16 +35,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .invalidateHttpSession(true);
     }
-
+    
     @Autowired
     UserDetailsService userDetailsService;
-
+    
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
-
+    
     static public class SpringSecurityInitializer extends AbstractSecurityWebApplicationInitializer {
 
     }
+    
 }
