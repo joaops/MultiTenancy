@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     
     static public class SpringSecurityInitializer extends AbstractSecurityWebApplicationInitializer {
-
+        
     }
     
 }
