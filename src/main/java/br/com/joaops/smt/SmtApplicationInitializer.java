@@ -30,7 +30,7 @@ public class SmtApplicationInitializer implements WebApplicationInitializer {
         sc.addFilter("CharacterEncodingFilter", getCharacterEncodingFilter()).addMappingForUrlPatterns(null, true, MAPPING_URL);
         sc.addFilter("RequestContextFilter", getRequestContextFilter()).addMappingForUrlPatterns(null, true, MAPPING_URL);
         sc.addFilter("OpenEntityManagerInViewFilter", getOpenEntityManagerInViewFilter()).addMappingForUrlPatterns(null, true, MAPPING_URL);
-        sc.addFilter("securityFilter", getDelegatingFilterProxy()).addMappingForUrlPatterns(null, true, MAPPING_URL);
+        //sc.addFilter("securityFilter", getDelegatingFilterProxy()).addMappingForUrlPatterns(null, true, MAPPING_URL);
         ServletRegistration.Dynamic dispatcher = sc.addServlet("LoversBookServlet", new DispatcherServlet(context));
         dispatcher.setLoadOnStartup(1);
         dispatcher.setAsyncSupported(Boolean.TRUE);
@@ -62,6 +62,7 @@ public class SmtApplicationInitializer implements WebApplicationInitializer {
         return openEntityManagerInViewFilter;
     }
     
+    //Esse filtro não está sendo usado!
     private DelegatingFilterProxy getDelegatingFilterProxy() {
         DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy("springSecurityFilterChain");
         return delegatingFilterProxy;
