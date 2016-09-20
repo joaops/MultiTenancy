@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content="Sample Multi Tenancy"/>
+        <meta name="author" content="João Paulo Siqueira"/>
+        <title>Home Page</title>
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css" th:href="@{/resources/css/bootstrap.min.css}" />
+        <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css" th:href="@{/resources/css/bootstrap-theme.min.css}" />
+        <link rel="stylesheet" href="resources/css/css.css" th:href="@{/resources/css/css.css}" />
+    </head>
+    <body>
+        <nav th:replace="fragments/navbar :: navbar" />
+        <div id="container" class="ajusta-navbar">
+            <div class="container-fluid">
+                <span th:text="'Usuários'"/>
+                <table>
+                    <thead>
+                        <tr>
+                            <th th:text="Username">Username</th>
+                            <th th:text="Password">Password</th>
+                            <th th:text="Database">Database</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${users == null}">
+                            <td colspan="3">Nenhum Usuário Encontrado!</td>
+                        </tr>
+                        <tr th:if="${users != null}" th:each="user : ${users}">
+                            <td th:text="${user.username}">Username</td>
+                            <td th:text="${user.password}">Password</td>
+                            <td th:text="${user.db}">Database</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span th:text="'Testes'"/>
+                <table>
+                    <thead>
+                        <tr>
+                            <th th:text="Test">Test</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${tests == null}">
+                            <td>Nenhum Test Encontrado!</td>
+                        </tr>
+                        <tr th:if="${test != null}" th:each="test : ${tests}">
+                            <td th:text="${test.test}">Test</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+        <script src="resources/js/npm.js" th:src="@{/resources/js/npm.js}"></script>
+        <script src="resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    </body>
+</html>

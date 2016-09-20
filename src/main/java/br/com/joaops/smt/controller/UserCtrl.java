@@ -12,6 +12,8 @@ import br.com.joaops.smt.model.User;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserCtrl {
@@ -32,6 +34,14 @@ public class UserCtrl {
     @RequestMapping(value = "/**")
     public List<Test> showContent(HttpServletRequest request) throws SQLException {
         return testDao.findAll();
+    }
+    
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView("home/index");
+        mav.addObject("users", userDao.findAll());
+        mav.addObject("tests", testDao.findAll());
+        return mav;
     }
     
 }
